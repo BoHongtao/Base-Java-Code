@@ -1,3 +1,5 @@
+package base;
+
 public class ObjDemo {
     public static void main(String [] argu){
         Person p = new Person();

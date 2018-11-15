@@ -1,3 +1,5 @@
+package base;
+
 public class FunctionDemo {
     public static void main(String []args){
         int sum = add(2,3);
