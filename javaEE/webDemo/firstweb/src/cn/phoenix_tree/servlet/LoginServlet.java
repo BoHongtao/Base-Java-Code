@@ -24,17 +24,22 @@ public class LoginServlet extends HttpServlet {
         request.setCharacterEncoding("UTF-8");
         String userName = request.getParameter("username");
         String pwd = request.getParameter("pwd");
+        System.out.println("post请求,发送的参数是："+userName+",pwd:"+pwd);
+
         User user = new User();
         user.setPwd(pwd);
         user.setUsername(userName);
         UserService userservice = new UserService();
         //登陆获取用户信息
         User res = userservice.login(user);
-        System.out.println("-------");
-        System.out.println(res.getUsername());
-        System.out.println(res.getPwd());
-        System.out.println(res.getId());
-        System.out.println(res.getSex());
-        System.out.println("post请求,获得的参数是："+userName+",pwd:"+pwd);
+        if(res == null){
+            System.out.println("查无此人");
+            return;
+        }
+        System.out.println("数据库查询到的数据是：");
+        System.out.println("名字："+res.getUsername());
+        System.out.println("密码："+res.getPwd());
+        System.out.println("ID："+res.getId());
+        System.out.println("性别："+res.getSex());
     }
 }
